@@ -1,0 +1,59 @@
+<h1>Intro</h1>
+
+<p>Hello, {@name}!</p>
+<p>My beer buddies: {@buddy[0]}, {@buddy[1]}, and {@buddy[2]}</p>
+
+VEYA
+
+<p>My beer buddies: {@buddy.0}, {@buddy.1}, and {@buddy.2}</p>
+
+<F3:exclude>
+	<p>A chunk of HTML we don't want displayed at the moment</p>
+</F3:exclude>
+
+<h1>IF</h1>
+
+<F3:check if="{@loggedin}">
+	<F3:true><p>Kullanici login oldugunda gosterilecek icerik</p></F3:true>
+</F3:check>
+
+<F3:check if="{@page=='Home'}">
+	<F3:false><span>HOME sayfasi iken gosterilecek icerik</span></F4:false>
+</F3:check>
+
+<F3:check if="{@gender=='M'}">
+	<F3:true>
+		<div>ERKEK -- Appears when condition is true</div>
+	</F3:true>
+	<F3:false>
+		<div>BAYAN -- Appears when condition is false</div>
+	</F3:false>
+</F3:check>
+
+<h1>Dongu</h1>
+
+<F3:repeat index="{@bb}" group="{@buddy}">
+	<p>{trim(@bb)}</p>
+</F3:repeat>
+
+<hr>
+
+<F3:repeat key="{@ikey}" index="{@idiv}" group="{@div}">
+<div>
+	<p><span><b>{@ikey}</b></span></p>
+	<p>
+	<F3:repeat index="{@ispan}" group="{@idiv}">
+		<span>{@ispan}</span>
+	</F3:repeat>
+	</p>
+</div>
+</F3:repeat>
+
+<hr>
+
+<F3:repeat key="{@key}" index="{@row}" group="{@rows}">
+<tr class="{(@key+1)%2?'odd':'even'}">
+	<td>{@row}</td>
+</tr>
+</F3:repeat>
+
